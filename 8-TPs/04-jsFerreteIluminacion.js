@@ -14,9 +14,8 @@ function CalcularPrecio ()
 	var descuento;
 	var resultado;
 	var marca;
-	var ingresosBrutos;
-	var mensaje;
-
+	
+	
 	lamparitas = 35;
 
 	cantLamp = document.getElementById("txtIdCantidad").value;
@@ -24,7 +23,186 @@ function CalcularPrecio ()
 
 	marca = document.getElementById("Marca").value;
 
-	descuento = 0;
+	if(cantLamp > 5)
+	{
+		descuento = 50;
+	}
+
+	else
+	{
+		if(cantLamp == 5)
+		{
+			switch(marca)
+			{
+				case "ArgentinaLuz":
+					descuento = 40;
+				break;
+
+				default:
+					descuento = 30;
+				break;
+			}
+		}
+
+		else
+		{
+			if(cantLamp == 4)
+			{
+				switch(marca)
+				{
+					case "ArgentinaLuz":
+					case "FelipeLamparas":
+						descuento = 25;
+					break;
+
+					default:
+						descuento = 20;
+					break;
+				}
+			}
+
+			else
+			{
+				if(cantLamp == 3)
+				{
+					switch(marca)
+					{
+						case "ArgentinaLuz":
+							descuento = 15;
+						break;
+
+						case "FelipeLamparas":
+							descuento = 10;
+						break;
+
+						default:
+							descuento = 5;
+						break;	
+					}
+				}
+
+				else
+				{
+					if(cantLamp < 3)
+					{
+						descuento = 0;
+					}
+				}
+			}
+		}
+	}
+
+	resultado = (cantLamp * lamparitas) - (((cantLamp * lamparitas) * descuento) / 100);
+
+ 	document.getElementById("txtIdprecioDescuento").value = resultado;
+
+}
+
+
+
+
+
+/*
+function CalcularPrecio () 
+{
+	var lamparitas;
+	var cantLamp;
+	var descuento;
+	var resultado;
+	var marca;
+	
+	
+	lamparitas = 35;
+
+	cantLamp = document.getElementById("txtIdCantidad").value;
+	cantLamp = parseInt(cantLamp);
+
+	marca = document.getElementById("Marca").value;
+
+	switch(cantLamp)
+	{
+		case 5:
+
+			if(marca == "ArgentinaLuz")
+			{
+				descuento = 40;
+			}
+
+			else
+			{
+				descuento = 30;
+			}
+
+		break;
+
+		case 4:
+
+			if(marca == "ArgentinaLuz" || marca == "FelipeLamparas")
+			{
+				descuento = 25;
+			}
+
+			else
+			{
+				descuento = 20;
+			}
+
+		break;
+
+		case 3:
+
+			if(marca == "ArgentinaLuz")
+			{
+				descuento = 15;
+			}
+
+			else
+			{
+				if(marca == "FelipeLamparas")
+				{
+					descuento = 10;
+				}
+
+				else
+				{
+					descuento = 5;
+				}
+			}
+
+		break;
+
+		case 2:
+		case 1:
+			descuento = 0;
+		break;
+
+		default:
+			descuento = 50;
+		break;	
+	}		
+
+	resultado = (cantLamp * lamparitas) - (((cantLamp * lamparitas) * descuento) / 100);
+
+ 	document.getElementById("txtIdprecioDescuento").value = resultado;
+
+}
+
+
+function CalcularPrecio () 
+{
+	var lamparitas;
+	var cantLamp;
+	var descuento;
+	var resultado;
+	var marca;
+	
+	
+	lamparitas = 35;
+
+	cantLamp = document.getElementById("txtIdCantidad").value;
+	cantLamp = parseInt(cantLamp);
+
+	marca = document.getElementById("Marca").value;
 
 	switch(cantLamp)
 	{
@@ -40,23 +218,58 @@ function CalcularPrecio ()
 					descuento = 30;
 				break;
 			}
+		break;
+		
+		case 4:
+
+			switch(marca)
+			{
+				case "ArgentinaLuz":
+				case "FelipeLamparas":
+					descuento = 25;
+				break;
+
+				default:
+					descuento = 20;
+				break;
+			}	
+		break;
+		
+		case 3:
+
+			switch(marca)
+			{
+				case "ArgentinaLuz":
+					descuento = 15;
+				break;
+
+				case "FelipeLamparas":
+					descuento = 10;
+				break;
+
+				default:
+					descuento = 5;
+				break;
+			}	
+		break;
+		
+		case 2:
+		case 1:
+			descuento = 0;
+		break;
+
+		default:
+			descuento = 50;
+		break;
 	}
     
-    resultado = (cantLamp * 35) - (((cantLamp * 35) * descuento) / 100);
+    resultado = (cantLamp * lamparitas) - (((cantLamp * lamparitas) * descuento) / 100);
 
-    if(resultado > 120)
-    {
-		ingresosBrutos = (resultado * 10) / 100;
-    	mensaje = "Usted Pago " + resultado + " pesos , siendo " + ingresosBrutos + " pesos los ingresos brutos";
-    	alert(mensaje);
-    }
-
-	document.getElementById("txtIdprecioDescuento").value = resultado;
-
+ 	document.getElementById("txtIdprecioDescuento").value = resultado;
 
 }
 
-/*
+
 function CalcularPrecio () 
 {
 	var lamparitas;

@@ -8,7 +8,13 @@ function mostrar()
 	var numeroMaximo;
 	var numeroMinimo;
 	var respuesta;
+	var banderaDelPar;
+	var menorDeLosPares;
+	var mayorDeLosNegativos;
+	var banderaDelNegativo;
 	//iniciar variables
+	banderaDelNegativo=0;
+	banderaDelPar=0;
 	banderaDelPrimero="es el primero";
 	respuesta='si';
 	while(respuesta=="si")
@@ -40,11 +46,39 @@ function mostrar()
 					}
 
 				}
+				//AGREGADO 
+				if(numeroIngresado%2==0)
+				{
+					if(banderaDelPar==0||numeroIngresado<menorDeLosPares)
+					{
+						menorDeLosPares=numeroIngresado;
+						banderaDelPar=1;						
+					}	
+				}
+
+				if(numeroIngresado<0)
+				{
+					if(banderaDelNegativo==0||numeroIngresado>mayorDeLosNegativos)
+					{
+						mayorDeLosNegativos=numeroIngresado;
+						banderaDelNegativo=1;
+					}
+
+				}
 
 		respuesta=prompt("desea continuar?");
 	}
 	
+	if(banderaDelPar==1)
+	{
+		alert("El menor de los pares es "+menorDeLosPares);
+	}
 
+	if(banderaDelNegativo==1)
+	{
+		alert("El mayor de los negativos es "+mayorDeLosNegativos);
+	}
+	
 
 
 	document.getElementById('txtIdMaximo').value = numeroMaximo;

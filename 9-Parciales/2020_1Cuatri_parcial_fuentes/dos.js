@@ -1,5 +1,123 @@
 //DAUD MANZO JUAN PABLO
 //TIEMPO 30 MINUTOS 56 SEGUNDOS
+//TIEMPO DE 2DA VUELTA 28 MINUTOS 04 SEGUNDOS
+function mostrar()
+{
+	var continuar;
+	var tipoIngresado;
+	var cantidadBolsas;
+	var precioXbolsa;
+	var acumuladorDeBolsas;
+	var descuento;
+	var precioBruto;
+	var acumuladorPrecioBruto;
+	var precioConDto;
+	var acumuladorArena;
+	var acumuladorCal;
+	var acumuladorCemento;
+	var tipoConMasCantidadBolsas;
+	var precioMaximo;
+	var banderaPrecioMaximo;
+	var tipoMasCaro;
+
+	banderaPrecioMaximo=0;
+	acumuladorArena=0;
+	acumuladorCal=0;
+	acumuladorCemento=0;
+	acumuladorPrecioBruto=0;
+	acumuladorDeBolsas=0;
+	continuar="si";
+
+	while(continuar=="si")
+	{
+		tipoIngresado=prompt("Ingrese arena ,cal o cemento");
+		while(tipoIngresado!="arena"&&tipoIngresado!="cal"&&tipoIngresado!="cemento")
+		{
+			tipoIngresado=prompt("Error,ingrese arena,cal o cemento");
+		}
+
+		cantidadBolsas=prompt("Ingrese cantidad de bolsas");
+		cantidadBolsas=parseInt(cantidadBolsas);
+		while(isNaN(cantidadBolsas)==true||cantidadBolsas<1)
+		{
+			cantidadBolsas=prompt("error,Ingrese cantidad de bolsas");
+			cantidadBolsas=parseInt(cantidadBolsas);
+		}
+
+		precioXbolsa=prompt("Ingrese precio");
+		precioXbolsa=parseInt(precioXbolsa);
+		while(isNaN(precioXbolsa)==true||precioXbolsa<1)
+		{
+			precioXbolsa=prompt("error,Ingrese precio");
+			precioXbolsa=parseInt(precioXbolsa);
+		}
+
+		acumuladorDeBolsas=acumuladorDeBolsas+cantidadBolsas;
+		precioBruto=cantidadBolsas*precioXbolsa;
+		acumuladorPrecioBruto=acumuladorPrecioBruto+precioBruto;
+
+		switch(tipoIngresado)
+		{	
+			case"arena":
+				acumuladorArena=acumuladorArena+cantidadBolsas;
+			break;
+			case"cal":
+				acumuladorCal=acumuladorCal+cantidadBolsas;
+			break;
+			case"cemento":
+				acumuladorCemento=acumuladorCemento+cantidadBolsas;
+			break;	
+		}
+
+		if(banderaPrecioMaximo==0||precioXbolsa>precioMaximo)
+		{
+			precioMaximo=precioXbolsa;
+			tipoMasCaro=tipoIngresado;
+			banderaPrecioMaximo=1;
+		}
+
+		continuar=prompt("ingrese si ,para continuar");
+	}
+
+	if(acumuladorDeBolsas>10)
+	{
+		descuento=15;
+		precioConDto=acumuladorPrecioBruto-(acumuladorPrecioBruto*descuento)/100;
+		alert("El precio con dto es "+precioConDto);
+	}
+	else
+	{
+		if(acumuladorDeBolsas>30)
+		{
+			descuento=25;
+			precioConDto=acumuladorPrecioBruto-(acumuladorPrecioBruto*descuento)/100;
+			alert("El precio con dto es "+precioConDto);
+		}
+	}
+
+	if(acumuladorArena>acumuladorCal&&acumuladorArena>acumuladorCemento)
+	{
+		tipoConMasCantidadBolsas="arena";
+	}
+	else
+	{
+		if(acumuladorCal>acumuladorCemento)
+		{
+			tipoConMasCantidadBolsas="cal";
+		}
+		else
+		{
+			tipoConMasCantidadBolsas="cemento";
+		}
+	}	
+
+	alert("El precio total bruto es "+acumuladorPrecioBruto);
+	alert("El tipo con mayor cantidad es "+tipoConMasCantidadBolsas);
+	alert("El tipo mas caro es "+tipoMasCaro);
+}
+
+
+/*
 function mostrar()
 {
 	var continuar;
@@ -118,7 +236,7 @@ function mostrar()
 
 }
 
-/*
+
 function mostrar()
 {
 	//INICIO

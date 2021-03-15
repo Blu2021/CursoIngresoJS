@@ -127,12 +127,7 @@ function mostrar()
 		{
 			contadorPaisesTempAlta=contadorPaisesTempAlta+1;
 			acumuladorDeHabitantesCalidos=acumuladorDeHabitantesCalidos+cantidadHabitantes;
-		}
-
-		if(continente=="america"&&temperaturaMinima<0)
-		{
-			contadorPaisesAmericaFrios=contadorPaisesAmericaFrios+1;
-		}
+		}		
 
 		acumuladorDeHabitantes=acumuladorDeHabitantes+cantidadHabitantes;
 
@@ -147,6 +142,10 @@ function mostrar()
 		{
 			case"america":
 				acumuladorHabitantesAmerica=acumuladorHabitantesAmerica+cantidadHabitantes;
+				if(temperaturaMinima<0)
+				{
+					contadorPaisesAmericaFrios=contadorPaisesAmericaFrios+1;
+				}
 			break;
 			case"asia":
 				acumuladorHabitantesAsia=acumuladorHabitantesAsia+cantidadHabitantes;
